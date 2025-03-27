@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Marcellus&display=swap");
 
-/* Button styles */
+
 .save-button,
 .close-view-button,
 .toggle-complete-button {
@@ -20,7 +20,7 @@
 }
 
 .save-button:hover {
-  background-color: #c39fc3;
+  background-color: #b18122;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -208,7 +208,7 @@
   box-shadow: 0 0 0 3px rgba(209, 179, 209, 0.5);
 }
 
-/* Responsive styles */
+
 @media (max-width: 768px) {
   .modal {
     padding: 1.35rem;
