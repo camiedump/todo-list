@@ -12,7 +12,6 @@ const TaskEditor = ({ task, onClose }) => {
     description: task?.description || '',
     date: task?.date || '',
     time: task?.time || '',
-    priority: task?.priority || 'normal',
     completed: task?.completed || false,
     dateSet: task?.dateSet || false
   });
@@ -53,7 +52,9 @@ const TaskEditor = ({ task, onClose }) => {
     if (isNewTask) {
       addTask(formData);
     } else {
-      updateTask(formData);
+      // Modify this part to match your context's updateTask function
+      const { id, ...updates } = formData;
+      updateTask(id, updates);
     }
     
     onClose();
@@ -127,8 +128,7 @@ const TaskEditor = ({ task, onClose }) => {
                 />
               </div>
             </div>
-            
-
+          
             
             <div className="form-group checkbox-group">
               <label htmlFor="completed" className="checkbox-label">

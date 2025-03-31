@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useTasks } from '../../context/TaskContext';
-import Overlay from '../ui/Overlay';
 import '../../styles/components/task-options.css';
 
 const TaskOptions = ({ task, filter, onClose, onEdit, onView }) => {
@@ -27,18 +26,30 @@ const TaskOptions = ({ task, filter, onClose, onEdit, onView }) => {
   };
   
   const handleEdit = () => {
-    onEdit(task);
+    if (onEdit) {
+      onEdit(task);
+    }
     onClose();
   };
   
   const handleView = () => {
-    onView(task);
+    if (onView) {
+      onView(task);
+    }
     onClose();
+  };
+
+  // This prevents event propagation so clicking the dropdown doesn't trigger the overlay
+  const handleDropdownClick = (e) => {
+    e.stopPropagation();
   };
 
   return (
     <>
-      <div className="options-dropdown">
+      {/* Transparent overlay that just handles clicks */}
+      <div className="overlay task-options-overlay" onClick={onClose}></div>
+      
+      <div className="options-dropdown" onClick={handleDropdownClick}>
         <button 
           className="option-item"
           onClick={handleView}
@@ -85,7 +96,6 @@ const TaskOptions = ({ task, filter, onClose, onEdit, onView }) => {
           </>
         )}
       </div>
-      <Overlay onClick={onClose} />
     </>
   );
 };
