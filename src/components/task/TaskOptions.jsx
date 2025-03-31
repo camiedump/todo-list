@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import { useTasks } from '../../context/TaskContext';
 import Overlay from '../ui/Overlay';
 import '../../styles/components/task-options.css';
 
-const TaskOptions = ({ task, filter, onClose }) => {
+const TaskOptions = ({ task, filter, onClose, onEdit, onView }) => {
   const { toggleTaskCompleted, moveToTrash, restoreTask, deleteTask } = useTasks();
   
   const handleToggleStatus = () => {
@@ -24,10 +25,34 @@ const TaskOptions = ({ task, filter, onClose }) => {
     deleteTask(task.id);
     onClose();
   };
+  
+  const handleEdit = () => {
+    onEdit(task);
+    onClose();
+  };
+  
+  const handleView = () => {
+    onView(task);
+    onClose();
+  };
 
   return (
     <>
       <div className="options-dropdown">
+        <button 
+          className="option-item"
+          onClick={handleView}
+        >
+          <span>View Details</span>
+        </button>
+        
+        <button 
+          className="option-item"
+          onClick={handleEdit}
+        >
+          <span>Edit Task</span>
+        </button>
+        
         {filter !== 'trash' ? (
           <>
             <button 

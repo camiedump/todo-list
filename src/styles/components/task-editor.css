@@ -1,0 +1,211 @@
+@import "../variables.css";
+
+/* Task Editor Container */
+.task-editor-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.task-editor {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Header */
+.task-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.task-editor-header h2 {
+  font-size: 20px;
+  color: var(--text-dark);
+  font-weight: 500;
+  margin: 0;
+}
+
+.task-editor .close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-editor .close-icon {
+  font-size: 24px;
+  color: var(--text-dark);
+  line-height: 1;
+}
+
+/* Form Elements */
+.task-editor .form-group {
+  margin-bottom: 15px;
+}
+
+.task-editor .form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.task-editor .date-group,
+.task-editor .time-group {
+  flex: 1;
+}
+
+.task-editor label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+.task-editor .required {
+  color: #e74c3c; /* Since --danger isn't in your variables */
+}
+
+.task-editor input[type="text"],
+.task-editor input[type="date"],
+.task-editor input[type="time"],
+.task-editor textarea,
+.task-editor select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd; /* Since --border isn't in your variables */
+  border-radius: calc(var(--border-radius) / 4);
+  font-size: 14px;
+  color: var(--text-dark);
+  background-color: var(--card-bg);
+}
+
+.task-editor input[type="text"]:focus,
+.task-editor input[type="date"]:focus,
+.task-editor input[type="time"]:focus,
+.task-editor textarea:focus,
+.task-editor select:focus {
+  border-color: var(--dark-blue);
+  outline: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.task-editor input.error,
+.task-editor textarea.error,
+.task-editor select.error {
+  border-color: #e74c3c; /* Since --danger isn't in your variables */
+}
+
+.task-editor .error-message {
+  color: #e74c3c; /* Since --danger isn't in your variables */
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Checkbox */
+.task-editor .checkbox-group {
+  margin-top: 15px;
+}
+
+.task-editor .checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.task-editor input[type="checkbox"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+/* Form Actions */
+.task-editor .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.task-editor .cancel-button,
+.task-editor .save-button {
+  padding: 10px 16px;
+  border-radius: calc(var(--border-radius) / 4);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+.task-editor .cancel-button {
+  background-color: transparent;
+  border: 1px solid #ddd; /* Since --border isn't in your variables */
+  color: var(--text-gray);
+}
+
+.task-editor .cancel-button:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* Simple hover effect */
+}
+
+.task-editor .save-button {
+  background-color: var(--dark-blue);
+  border: none;
+  color: white;
+}
+
+.task-editor .save-button:hover {
+  background-color: #0a2c46; /* Slightly darker than --dark-blue */
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 990;
+}
+
+/* Animation */
+.task-editor-container {
+  animation: taskEditorFadeIn var(--transition-speed) ease;
+}
+
+@keyframes taskEditorFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .task-editor .form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .task-editor-container {
+    width: 95%;
+  }
+}
