@@ -1,0 +1,14 @@
+@import "../variables.css";
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--text-gray);
+  font-style: italic;
+}

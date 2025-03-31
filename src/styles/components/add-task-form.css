@@ -1,0 +1,112 @@
+@import "../variables.css";
+
+.add-task-dropdown {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 500px;
+  background-color: #f5f0e1;;
+  border-radius: 10px;
+  box-shadow: var(--shadow-lg);
+  z-index: 10;
+  padding: 20px;
+  animation: dropdown 0.3s ease;
+}
+
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--dark-blue);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #777;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  background-color: white;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--dark-blue);
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .add-task-dropdown {
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .add-task-dropdown {
+    width: 100%;
+    top: 70px;
+    padding: 15px;
+  }
+
+  .dropdown-title {
+    font-size: 16px;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+}

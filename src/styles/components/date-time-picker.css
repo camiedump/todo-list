@@ -1,0 +1,38 @@
+@import "../variables.css";
+
+.form-checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.form-checkbox {
+  margin-right: 10px;
+  accent-color: var(--dark-blue);
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.form-date-time {
+  margin-top: 8px;
+  margin-left: 25px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 6px;
+  border-left: 3px solid var(--dark-blue);
+}
+
+.form-date-time-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-date-time-input:focus {
+  outline: none;
+  border-color: var(--dark-blue);
+}

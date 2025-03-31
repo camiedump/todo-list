@@ -1,0 +1,15 @@
+:root {
+  --dark-blue: #0c3758;
+  --sidebar-blue: #0c3758;
+  --cream-bg: #f5f0e1;
+  --card-bg: #f0f0f0;
+  --text-dark: #333333;
+  --text-gray: #777777;
+  --transition-speed: 0.3s;
+  --sidebar-width: 70px;
+  --sidebar-expanded-width: 240px;
+  --border-radius: 25px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
