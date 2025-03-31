@@ -7,23 +7,24 @@
   box-shadow: var(--shadow-sm);
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 1; /* Base z-index for all cards */
 }
 
-.task-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+/* Status styling for completed tasks */
+.task-card.completed {
+  border-left: 4px solid #4caf50; /* Green border for completed tasks */
+  background-color: rgba(69, 157, 72, 0.1); /* Very light green background */
 }
 
-.task-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 15px;
-}
-
+/* Remove the badge and update task-date-time */
 .task-date-time {
   display: flex;
   flex-direction: column;
+}
+
+.task-date-row {
+  display: flex;
+  align-items: center;
 }
 
 .task-date {
@@ -37,9 +38,46 @@
   font-style: italic;
 }
 
+.task-time-row {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
 .task-time {
   font-size: 12px;
   color: var(--text-gray);
+}
+
+.task-status {
+  margin-left: 8px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.1);
+  padding: 2px 6px;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  z-index: 2; /* Slightly higher z-index on hover */
+}
+
+.task-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+/* More button container with proper positioning */
+.more-button-container {
+  position: relative;
+  z-index: 915; /* Higher z-index to ensure dropdown appears above other cards */
 }
 
 .more-button {
@@ -64,11 +102,26 @@
   background-color: var(--dark-blue);
 }
 
+/* Proper dropdown positioning */
+.options-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 5px;
+  z-index: 920; /* Higher than container but lower than modals */
+}
+
 .task-title {
   font-size: clamp(18px, 2vw, 24px);
   margin-bottom: 10px;
   color: var(--text-dark);
   font-weight: 500;
+}
+
+/* Style for completed task title */
+.task-card.completed .task-title {
+  text-decoration: line-through;
+  opacity: 0.8;
 }
 
 .task-description {

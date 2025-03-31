@@ -1,9 +1,21 @@
 import { useState } from 'react';
+import { useTasks } from '../../context/TaskContext';
 import '../../styles/components/task-viewer.css';
 
 const TaskViewer = ({ task, onClose, onEdit }) => {
+  const { toggleTaskCompleted } = useTasks();
+  
   if (!task) return null;
   
+  const handleToggleStatus = () => {
+    toggleTaskCompleted(task.id);
+    // Close the viewer after toggling status
+    onClose();
+  };
+
+  // Set class for toggle button based on task status
+  const toggleButtonClass = `toggle-status-button action-button ${task.completed ? 'mark-incomplete' : ''}`;
+
   return (
     <>
       <div className="task-viewer-container">
@@ -35,8 +47,6 @@ const TaskViewer = ({ task, onClose, onEdit }) => {
                 {task.completed ? "Completed" : "Pending"}
               </span>
             </div>
-            
-
           </div>
           
           <div className="task-full-description">
@@ -46,17 +56,26 @@ const TaskViewer = ({ task, onClose, onEdit }) => {
           
           <div className="task-viewer-actions">
             <button 
-              className="edit-button action-button"
-              onClick={() => onEdit(task)}
+              className={toggleButtonClass}
+              onClick={handleToggleStatus}
             >
-              Edit
+              {task.completed ? "Mark as Incomplete" : "Mark as Complete"}
             </button>
-            <button 
-              className="close-button action-button"
-              onClick={onClose}
-            >
-              Close
-            </button>
+            
+            <div className="right-buttons">
+              <button 
+                className="edit-button action-button"
+                onClick={() => onEdit(task)}
+              >
+                Edit
+              </button>
+              <button 
+                className="close-button action-button"
+                onClick={onClose}
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       </div>

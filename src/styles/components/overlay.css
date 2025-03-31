@@ -7,8 +7,9 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 5;
-  animation: fadeIn 0.2s ease;
+  z-index: 900; /* High enough to cover most content but below dropdown/modal elements */
+  animation: fadeIn var(--transition-speed, 0.2s) ease;
+  cursor: pointer; /* Indicates the overlay is clickable */
 }
 
 @keyframes fadeIn {

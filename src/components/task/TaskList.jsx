@@ -17,7 +17,16 @@ const TaskList = ({ tasks, filter, emptyMessage }) => {
     setEditTask(task);
   };
 
-  if (tasks.length === 0) {
+  // Filter tasks based on the current view
+  const filteredTasks = tasks.filter(task => {
+    // For home view, don't show completed tasks
+    if (filter === 'home' && task.completed) {
+      return false;
+    }
+    return true;
+  });
+
+  if (filteredTasks.length === 0) {
     return (
       <div className="empty-state">
         <p>{emptyMessage}</p>
@@ -28,12 +37,13 @@ const TaskList = ({ tasks, filter, emptyMessage }) => {
   return (
     <>
       <div className="task-list">
-        {tasks.map(task => (
+        {filteredTasks.map(task => (
           <TaskCard 
             key={task.id}
             task={task}
             filter={filter}
-            onClick={() => handleViewTask(task)} // This triggers the task view when clicked
+            onClick={() => handleViewTask(task)}
+            onEdit={() => handleEditTask(task)}
           />
         ))}
       </div>

@@ -87,7 +87,6 @@
   color: var(--text-gray);
 }
 
-/* We'll need to define these in your variables file or use fallbacks */
 .completed-status {
   color: green;
   font-weight: 500;
@@ -119,7 +118,13 @@
 /* Actions */
 .task-viewer-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between; /* Changed from flex-end to space-between */
+  gap: 10px;
+  flex-wrap: wrap; /* Added to allow wrapping on smaller screens */
+}
+
+.right-buttons {
+  display: flex;
   gap: 10px;
 }
 
@@ -129,6 +134,25 @@
   font-size: 14px;
   cursor: pointer;
   transition: all var(--transition-speed) ease;
+}
+
+/* Toggle status button */
+.toggle-status-button {
+  background-color: green;
+  color: white;
+  border: none;
+}
+
+.toggle-status-button:hover {
+  background-color: darkgreen;
+}
+
+.toggle-status-button.mark-incomplete {
+  background-color: orange;
+}
+
+.toggle-status-button.mark-incomplete:hover {
+  background-color: darkorange;
 }
 
 .edit-button {
@@ -187,5 +211,20 @@
   .task-metadata {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .task-viewer-actions {
+    flex-direction: column;
+  }
+
+  .right-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .action-button {
+    flex: 1;
+    text-align: center;
   }
 }
