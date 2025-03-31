@@ -1,0 +1,154 @@
+@import "../variables.css";
+
+.sidebar {
+  background-color: var(--sidebar-blue);
+  height: 100vh;
+  transition: all var(--transition-speed) ease;
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+  width: var(--sidebar-width);
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.sidebar.expanded {
+  width: var(--sidebar-expanded-width);
+  z-index: 100; /* Higher z-index when expanded to overlay content */
+}
+
+.sidebar-header {
+  padding: 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-title {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  display: none;
+}
+
+.sidebar.expanded .sidebar-title {
+  display: block;
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar-search {
+  padding: 15px;
+  display: none;
+  margin-bottom: 10px;
+}
+
+.sidebar.expanded .sidebar-search {
+  display: block;
+}
+
+.sidebar-search-container {
+  position: relative;
+}
+
+.sidebar-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+}
+
+.sidebar-search-input {
+  width: 100%;
+  padding: 8px 10px 8px 35px;
+  border-radius: 20px;
+  border: none;
+  background-color: white;
+  font-size: 14px;
+}
+
+.sidebar-search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.menu-label {
+  color: white;
+  font-size: 16px;
+  padding: 10px 15px;
+  display: none;
+}
+
+.sidebar.expanded .menu-label {
+  display: block;
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-icon {
+  min-width: 24px;
+}
+
+.nav-text {
+  margin-left: 15px;
+  display: none;
+}
+
+.sidebar.expanded .nav-text {
+  display: block;
+}
+
+/* Responsive sidebar styles */
+@media (max-width: 768px) {
+  .sidebar {
+    width: var(--sidebar-width);
+    /* No transform for collapsed state - keep icons visible */
+  }
+
+  .sidebar.expanded {
+    width: 250px;
+    /* When expanded, overlay content instead of pushing it */
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar.expanded {
+    width: 80%;
+  }
+}
