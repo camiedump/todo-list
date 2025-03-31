@@ -16,6 +16,7 @@ const Sidebar = ({ expanded, toggleSidebar, searchQuery, setSearchQuery }) => {
   
   return (
     <>
+      {/* Overlay backdrop when sidebar is expanded on mobile */}
       {isMobile && expanded && (
         <div 
           className="sidebar-backdrop"

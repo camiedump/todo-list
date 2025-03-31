@@ -4,7 +4,6 @@ import { useTasks } from '../../context/TaskContext';
 import DateTimePicker from './DateTimePicker';
 import Button from '../ui/Button';
 import Overlay from '../ui/Overlay';
-import { formatCurrentDate } from '../../utils/dateUtils';
 import '../../styles/components/add-task-form.css';
 
 const AddTaskForm = ({ onClose }) => {
@@ -74,7 +73,7 @@ const AddTaskForm = ({ onClose }) => {
     
     addTask(newTask);
     
-  
+    // Reset form
     setTitle('');
     setDescription('');
     setUseCustomDate(false);

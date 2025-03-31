@@ -13,7 +13,7 @@ const DateTimePicker = ({
 }) => {
   return (
     <>
-  
+      {/* Date Options */}
       <div className="form-group">
         <div className="form-checkbox-group">
           <input
@@ -39,6 +39,7 @@ const DateTimePicker = ({
         )}
       </div>
       
+      {/* Time Options */}
       <div className="form-group">
         <div className="form-checkbox-group">
           <input

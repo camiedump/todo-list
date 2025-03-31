@@ -2,11 +2,23 @@ import { useState } from 'react';
 import TaskOptions from './TaskOptions';
 import '../../styles/components/task-card.css';
 
-const TaskCard = ({ task, filter }) => {
+const TaskCard = ({ task, filter, onClick }) => {
   const [showOptions, setShowOptions] = useState(false);
 
+  const handleOptionsToggle = (e) => {
+    e.stopPropagation(); // Prevent card click when clicking options
+    setShowOptions(!showOptions);
+  };
+
+  const handleCardClick = () => {
+    if (typeof onClick === 'function') {
+      onClick(task);
+    }
+  };
+
   return (
-    <div className="task-card">
+    <div 
+      className="task-card">
       <div className="task-card-header">
         <div className="task-date-time">
           {task.dateSet && task.date ? (
@@ -19,7 +31,7 @@ const TaskCard = ({ task, filter }) => {
         
         <button 
           className="more-button"
-          onClick={() => setShowOptions(!showOptions)}
+          onClick={handleOptionsToggle}
           aria-label="Task options"
         >
           <div className="dots-container">
@@ -34,6 +46,12 @@ const TaskCard = ({ task, filter }) => {
             task={task} 
             filter={filter} 
             onClose={() => setShowOptions(false)} 
+            onView={() => {
+              setShowOptions(false);
+              if (typeof onClick === 'function') {
+                onClick(task); // Open task viewer from options menu too
+              }
+            }}
           />
         )}
       </div>

@@ -1,0 +1,191 @@
+@import "../variables.css";
+
+/* Task Viewer Container */
+.task-viewer-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.task-viewer {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  box-shadow: var(--shadow-md);
+}
+
+/* Header */
+.task-viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.task-date-time {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-date {
+  font-size: 14px;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.date-not-set {
+  color: var(--text-gray);
+  font-style: italic;
+}
+
+.task-time {
+  font-size: 12px;
+  color: var(--text-gray);
+  margin-top: 2px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-icon {
+  font-size: 24px;
+  color: var(--text-dark);
+  line-height: 1;
+}
+
+/* Task Title */
+.task-title {
+  font-size: clamp(18px, 2vw, 24px);
+  margin-bottom: 15px;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+/* Metadata */
+.task-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.task-status {
+  color: var(--text-gray);
+}
+
+/* We'll need to define these in your variables file or use fallbacks */
+.completed-status {
+  color: green;
+  font-weight: 500;
+}
+
+.pending-status {
+  color: orange;
+  font-weight: 500;
+}
+
+/* Description */
+.task-full-description {
+  margin-bottom: 25px;
+}
+
+.task-full-description h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.task-full-description p {
+  font-size: 14px;
+  color: var(--text-gray);
+  line-height: 1.5;
+}
+
+/* Actions */
+.task-viewer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.action-button {
+  padding: 8px 16px;
+  border-radius: calc(var(--border-radius) / 4);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+.edit-button {
+  background-color: var(--dark-blue);
+  color: white;
+  border: none;
+}
+
+.edit-button:hover {
+  background-color: #0a2c46; /* Slightly darker than --dark-blue */
+}
+
+.close-button.action-button {
+  background-color: transparent;
+  border: 1px solid var(--text-gray);
+  color: var(--text-gray);
+}
+
+.close-button.action-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 990;
+}
+
+/* Animation */
+.task-viewer-container {
+  animation: taskViewerFadeIn var(--transition-speed) ease;
+}
+
+@keyframes taskViewerFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .task-viewer-container {
+    width: 95%;
+  }
+
+  .task-metadata {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
